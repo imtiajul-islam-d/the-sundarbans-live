@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@config "../tailwind.config.js";
+
+.swiper-button-next {
+  position: absolute;
+  top: 0;
+  left: -1000px;
+  /* display: block; */
+  padding: 12px 16px;
+  background-color: rgb(250, 247, 240);
+} 
+.swiper-button-prev {
+    position: relative;
+  /* display: block; */
+  padding: 12px;
+  background-color: rgb(250, 247, 240);
+} 
+
+.swiper-button-next > svg {
+  color: black;
+  
+}
+.swiper-button-prev > svg {
+  color: black;
+}

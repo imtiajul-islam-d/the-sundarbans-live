@@ -1,0 +1,46 @@
+{
+    "items": [
+        {
+            "img":"/images/banner/banner1.jpg",
+            "place_name": "Place1",
+            "link": "/",
+            "title": "Word count1 count2 count3 count4 count5"
+        },
+        {
+            "img":"/images/banner/banner2.jpg",
+            "place_name": "Place2",
+            "link": "/",
+            "title": "Word count1 count2 count3 count4 count5"
+        },
+        {
+            "img":"/images/banner/banner3.jpg",
+            "place_name": "Place3",
+            "link": "/",
+            "title": "Word count1 count2 count3 count4 count5"
+        },
+        {
+            "img":"/images/banner/banner4.jpg",
+            "place_name": "Place4",
+            "link": "/",
+            "title": "Word count1 count2 count3 count4 count5"
+        },
+        {
+            "img":"/images/banner/banner5.jpg",
+            "place_name": "Place5",
+            "link": "/",
+            "title": "Word count1 count2 count3 count4 count5"
+        },
+        {
+            "img":"/images/banner/banner6.jpg",
+            "place_name": "Place6",
+            "link": "/",
+            "title": "Word count1 count2 count3 count4 count5"
+        },
+            {
+            "img":"/images/banner/banner2.jpg",
+            "place_name": "Place2",
+            "link": "/",
+            "title": "Word count1 count2 count3 count4 count5"
+        }
+    ]
+}

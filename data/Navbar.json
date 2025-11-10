@@ -1,0 +1,25 @@
+{
+    "nav_bottom": {
+        "left": [
+            {
+                "txt": "Get Inspired",
+                "icon": "/images/nav_bottom_icon1.png"
+            },
+            {
+                "txt": "Events",
+                "icon": "/images/nav_bottom_icon2.png"
+            }
+        ],
+        "logo": "/images/The_Sundarbans.png",
+        "right": [
+            {
+                "txt": "Travel Guides",
+                "icon": "/images/nav_bottom_icon3.png"
+            },
+            {
+                "txt": "About Us",
+                "icon": "/images/nav_bottom_icon4.png"
+            }
+        ]
+    }
+}
