@@ -63,7 +63,7 @@ const Categories = () => {
                             <p className="text-white text-tiny">The largest one</p>
                             <p className="text-white text-tiny">Want to know about it?</p>
                         </div>
-                        <Button className="text-white" color="warning" radius="full" size="sm">
+                        <Button className="text-white bg-orange-500 rounded-none" size="sm">
                             Learn More
                         </Button>
                     </CardFooter>
@@ -88,7 +88,7 @@ const Categories = () => {
                                 <p className="text-white text-tiny">Get a good night&#39;s sleep.</p>
                             </div>
                         </div>
-                        <Button radius="full" size="sm">
+                        <Button className='rounded-none' size="sm">
                             Details
                         </Button>
                     </CardFooter>
