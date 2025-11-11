@@ -1,14 +1,69 @@
+"use client";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify"; // For notifications
+import emailjs from '@emailjs/browser';
 import React from 'react';
 
 const Contact = () => {
+    const [userInput, setUserInput] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+    });
+    const [sending, setSending] = useState(false)
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUserInput({
+            ...userInput,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSending(true)
+        console.log("object");
+
+        const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+        const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+        const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+        try {
+            const emailParams = {
+                name: userInput.name,
+                email: userInput.email,
+                subject: userInput.subject,
+                message: userInput.message
+            };
+
+            const res = await emailjs.send(serviceID, templateID, emailParams, userID);
+
+            if (res.status === 200) {
+                toast.success("Message sent successfully!");
+                setUserInput({
+                    name: "",
+                    email: "",
+                    subject: "",
+                    message: ""
+                });
+                setSending(false)
+            }
+        } catch (error) {
+            setSending(false)
+            toast.error("Failed to send message. Please try again later.");
+        }
+    };
+
     return (
         <section>
             <div className="grid items-start max-w-[1440px] gap-16 p-6 mx-auto bg-white lg:grid-cols-2 max-lg:max-w-2xl">
                 <div>
-                    <h2 className="text-3xl font-bold text-slate-900">Let's Talk</h2>
-                    <p className="text-[15px] text-slate-600 mt-4 leading-relaxed">Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project  and provide help.</p>
+                    <h2 className="font-sans text-3xl font-bold text-orange-500">Let's Talk</h2>
+                    <p className="text-[15px] text-slate-600 mt-4 leading-relaxed">We love helping travelers, because we&apos;re travelers too! </p>
                     <div className="mt-12">
-                        <h2 className="text-base font-semibold text-slate-900">Email</h2>
+                        <h2 className="font-sans text-base font-semibold text-slate-900">Email</h2>
                         <ul className="mt-4">
                             <li className="flex items-center">
                                 <div className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
@@ -28,7 +83,7 @@ const Contact = () => {
                     </div>
 
                     <div className="mt-12">
-                        <h2 className="text-base font-semibold text-slate-900">Socials</h2>
+                        <h2 className="font-sans text-base font-semibold text-slate-900">Socials</h2>
                         <ul className="flex mt-4 space-x-4">
                             <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                                 <a href="javascript:void(0)">
@@ -64,18 +119,38 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <form className="space-y-4 lg:ml-auto">
-                    <input type='text' placeholder='Name'
-                        className="w-full px-4 py-3 text-sm border border-gray-200 rounded-md outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent" />
-                    <input type='email' placeholder='Email'
-                        className="w-full px-4 py-3 text-sm border border-gray-200 rounded-md outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent" />
-                    <input type='text' placeholder='Subject'
-                        className="w-full px-4 py-3 text-sm border border-gray-200 rounded-md outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent" />
-                    <textarea placeholder='Message' rows={6}
-                        className="w-full px-4 pt-3 text-sm border border-gray-200 rounded-md outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent"></textarea>
-                    <button type='button'
-                        className="text-white bg-slate-900 hover:bg-slate-800 tracking-wide rounded-md text-sm font-medium px-4 py-3 w-full cursor-pointer !mt-2 border-0">Send message</button>
+                <form className="space-y-4 lg:ml-auto" onSubmit={handleSubmit}>
+                    <input name="name"
+                        value={userInput.name}
+                        onChange={handleChange}
+                        required type='text'
+                        placeholder='Name'
+                        className="w-full px-4 py-3 text-sm border border-gray-200 outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent" />
+                    <input name="email"
+                        value={userInput.email}
+                        onChange={handleChange}
+                        required type='email'
+                        placeholder='Email'
+                        className="w-full px-4 py-3 text-sm border border-gray-200 outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent" />
+                    <input
+                        name="subject"
+                        value={userInput.subject}
+                        onChange={handleChange}
+                        required
+                        type='text'
+                        placeholder='Subject'
+                        className="w-full px-4 py-3 text-sm border border-gray-200 outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent" />
+                    <textarea
+                        name="message"
+                        value={userInput.message}
+                        onChange={handleChange}
+                        required
+                        placeholder='Message' rows={6}
+                        className="w-full px-4 pt-3 text-sm border border-gray-200 outline-none bg-slate-100 text-slate-900 focus:border-slate-900 focus:bg-transparent"></textarea>
+                    <button disabled={sending} type='submit'
+                        className="text-white font-sans bg-slate-900 hover:bg-slate-800 tracking-wide  text-sm font-medium px-4 py-3 w-full cursor-pointer !mt-2 border-0">{sending ? "Sending..." : "Send message"}</button>
                 </form>
+                <ToastContainer />
             </div>
         </section>
     );
