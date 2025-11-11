@@ -1,14 +1,14 @@
 import React from 'react';
 import { TfiHome } from 'react-icons/tfi';
 
-const MobileDrawer = ({ dropdown, setDropdown }) => {
+const MobileDrawer = ({ dropdown, setDropdown }: any) => {
     return (
         <section className='fixed top-0 left-0 z-50 overflow-scroll bg-transparent backdrop-blur-sm w-svw h-svh'>
             <div className='relative'>
                 <div className='absolute top-0 right-0 bg-gray-700 w-svw min-h-svh'>
                     <div className='flex items-center justify-between px-4 py-4 border-b border-gray-500 font-epic'>
                         <h2 className='text-5xl text-gray-300 xs:text-6xl md:text-7xl font-epic'>The Sundarbans</h2>
-                        <button className='py-3 text-5xl text-gray-200 bg-orange-500 px-7' onClick={() => setDropdown((e) => !e)}>X</button>
+                        <button className='py-3 text-5xl text-gray-200 bg-orange-500 px-7' onClick={() => setDropdown((e: any) => !e)}>X</button>
                     </div>
                     {/* navbar content */}
                     <div className='mx-4 mt-8'>
@@ -18,7 +18,7 @@ const MobileDrawer = ({ dropdown, setDropdown }) => {
                                     <div>
                                         {/* <h2 className="mb-6 text-base font-medium text-white">Company</h2> */}
                                         <ul className="space-y-5">
-                                            <li onClick={() => setDropdown((e) => !e)}>
+                                            <li onClick={() => setDropdown((e: any) => !e)}>
                                                 <a href="javascript:void(0)" className="text-slate-400 hover:text-white text-[15px] inline-flex items-center transition-all"><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round" className="inline mr-1.5 h-[18px] w-[18px] shrink-0">
@@ -27,7 +27,7 @@ const MobileDrawer = ({ dropdown, setDropdown }) => {
                                                     About
                                                 </a>
                                             </li>
-                                            <li onClick={() => setDropdown((e) => !e)}>
+                                            <li onClick={() => setDropdown((e: any) => !e)}>
                                                 <a href="javascript:void(0)" className="text-slate-400 hover:text-white text-[15px] inline-flex items-center transition-all"><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round" className="inline mr-1.5 h-[18px] w-[18px] shrink-0">
@@ -36,7 +36,7 @@ const MobileDrawer = ({ dropdown, setDropdown }) => {
                                                     About
                                                 </a>
                                             </li>
-                                            <li onClick={() => setDropdown((e) => !e)}>
+                                            <li onClick={() => setDropdown((e: any) => !e)}>
                                                 <a href="javascript:void(0)" className="text-slate-400 hover:text-white text-[15px] inline-flex items-center transition-all"><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round" className="inline mr-1.5 h-[18px] w-[18px] shrink-0">
@@ -45,7 +45,7 @@ const MobileDrawer = ({ dropdown, setDropdown }) => {
                                                     About
                                                 </a>
                                             </li>
-                                            <li onClick={() => setDropdown((e) => !e)}>
+                                            <li onClick={() => setDropdown((e: any) => !e)}>
                                                 <a href="javascript:void(0)" className="text-slate-400 hover:text-white text-[15px] inline-flex items-center transition-all"><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round" className="inline mr-1.5 h-[18px] w-[18px] shrink-0">
@@ -54,7 +54,7 @@ const MobileDrawer = ({ dropdown, setDropdown }) => {
                                                     About
                                                 </a>
                                             </li>
-                                            <li onClick={() => setDropdown((e) => !e)}>
+                                            <li onClick={() => setDropdown((e: any) => !e)}>
                                                 <a href="javascript:void(0)" className="text-slate-400 hover:text-white text-[15px] inline-flex items-center transition-all"><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round" className="inline mr-1.5 h-[18px] w-[18px] shrink-0">

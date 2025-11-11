@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-const Slider_item = ({ item }) => {
+const Slider_item = ({ item }: any) => {
     return (
         <div className="border border-gray-200 cursor-pointer">
             {/* TODO: placeholder for image */}

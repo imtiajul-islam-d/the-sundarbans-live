@@ -12,7 +12,8 @@ export default function Accordion_comp() {
             <div className='mb-8 md:mb-10 lg:mb-12'>
                 <h3 className='max-w-2xl px-2 mx-auto font-sans text-xl font-semibold text-center uppercase sm:px-6 md:text-2xl'>Our guests usually <span className='text-orange-600'> asks</span> the following questions.</h3>
             </div>
-            <Accordion selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+            <Accordion selectedKeys={selectedKeys} onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}>
+                {/* <Accordion selectedKeys={selectedKeys} onSelectionChange={(keys) => setSelectedKeys(keys)}></Accordion> */}
                 <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
                     {defaultContent}
                 </AccordionItem>

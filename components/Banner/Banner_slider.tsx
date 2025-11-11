@@ -38,10 +38,10 @@ const Banner_slider = () => {
                 spaceBetween={8}
                 slidesPerView={slides}
                 navigation
-            // effect='fade'
-            // autoplay={
-            //     { delay: 5000, }
-            // }
+                // effect='fade'
+                autoplay={
+                    { delay: 3000, }
+                }
             // pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
             >
