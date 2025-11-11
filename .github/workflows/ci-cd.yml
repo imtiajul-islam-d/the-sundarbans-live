@@ -143,34 +143,70 @@ jobs:
               ./
               !node_modules/
 
-    build-and-deploy:
-      runs-on: self-hosted
-      needs: build
-      steps:  
-          - name: Checkout code
-            uses: actions/checkout@v3
+    # build-and-deploy:
+    #   runs-on: self-hosted
+    #   needs: build
+    #   steps:  
+    #       - name: Checkout code
+    #         uses: actions/checkout@v3
 
-          - name: Receive the artifact
-            uses: actions/download-artifact@v4
-            with:
-              name: nextjs-build
+    #       - name: Receive the artifact
+    #         uses: actions/download-artifact@v4
+    #         with:
+    #           name: nextjs-build
           
-          - name: Show the artifact
-            run: 
-              ls -a
+    #       - name: Show the artifact
+    #         run: 
+    #           ls -a
 
-          - name: Install PM2 globally
-            run: npm install -g pm2
+    #       - name: Install PM2 globally
+    #         run: npm install -g pm2
 
-          - name: Deploy application
-            run: |
-              ls -a
-              pm2 status
-              # stop existing process if running
-              pm2 delete node-app || true
+    #       - name: Deploy application
+    #         run: |
+    #           ls -a
+    #           pm2 status
+    #           # stop existing process if running
+    #           pm2 delete node-app || true
 
-              # start new process
-              pm2 start "node build/standalone/server.js" --name=node-app
+    #           # start new process
+    #           pm2 start "node build/standalone/server.js" --name=node-app
 
-              # same PM2 process list
-              pm2 save
+    #           # same PM2 process list
+    #           pm2 save
+
+    build-and-deploy:
+        runs-on: self-hosted
+        needs: build
+
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Download build artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: nextjs-build
+
+        - name: Show artifact contents
+          run: ls -la
+
+        - name: Load NVM and install PM2
+          run: |
+            export NVM_DIR="$HOME/.nvm"
+            source "$NVM_DIR/nvm.sh"
+            npm install -g pm2
+
+        - name: Deploy application with PM2
+          run: |
+            export NVM_DIR="$HOME/.nvm"
+            source "$NVM_DIR/nvm.sh"
+
+            cd $GITHUB_WORKSPACE
+            ls -la build/standalone/
+
+            pm2 delete the-sundarbans || true
+            pm2 start "node build/standalone/server.js" --name=the-sundarbans
+
+            pm2 save
+            pm2 status
