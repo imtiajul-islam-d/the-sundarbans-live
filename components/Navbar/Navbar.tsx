@@ -8,6 +8,7 @@ import { RiTwitterXLine } from 'react-icons/ri';
 import NavbarBottom from './NavbarBottom';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import MobileDrawer from './MobileDrawer';
+import Test from './test';
 
 const Navbar = () => {
     const [dropdown, setDropdown] = useState(false)
@@ -78,6 +79,8 @@ const Navbar = () => {
                 dropdown ? <MobileDrawer dropdown={dropdown} setDropdown={setDropdown} /> : ""
             }
             <NavbarBottom />
+
+            {/* <Test /> */}
         </nav>
     );
 };
