@@ -1,3 +1,93 @@
+# # name: CI/CD Pipeline
+
+# # on:
+# #   push:
+# #     branches:
+# #       - main
+# #   pull_request:
+# #     branches:
+# #       - main
+
+
+# # jobs: 
+
+# #     build:
+# #       runs-on: ubuntu-latest
+# #       steps:
+# #         - name: Checkout code
+# #           uses: actions/checkout@v4
+
+# #         - name: Set up Node.js
+# #           uses: actions/setup-node@v4
+# #           with:
+# #             node-version: "24"
+# #             cache: 'npm'
+
+# #         - name: Install system dependencies for sharp
+# #           run: sudo apt-get update && sudo apt-get install -y libvips-dev
+
+# #         - name: Install dependencies
+# #           run: npm install
+
+# #         - name: Build Next.js app
+# #           run: npm run build
+
+# #         # - name: Copy static assets
+# #         #   run: cp -r public build/standalone/ && cp -r build/static build/standalone/build/
+# #         - name: Copy static assets
+# #           run: |
+# #             # Create the necessary directory structure first
+# #             mkdir -p build/standalone/build/
+            
+# #             # Now copy the assets into the existing structure
+# #             cp -r public build/standalone/
+# #             cp -r build/static build/standalone/build/
+
+
+# #         - name: Upload build artifact
+# #           uses: actions/upload-artifact@v4
+# #           with:
+# #             name: nextjs-build
+# #             path: |
+# #               ./
+# #               !node_modules/
+
+# #     build-and-deploy:
+# #       runs-on: self-hosted
+# #       needs: build
+# #       steps:  
+# #           - name: Checkout code
+# #             uses: actions/checkout@v3
+
+# #           - name: Receive the artifact
+# #             uses: actions/download-artifact@v4
+# #             with:
+# #               name: nextjs-build
+          
+# #           - name: Show the artifact
+# #             run: 
+# #               ls -a
+
+# #           - name: Deploy application
+# #             run: |
+# #               ls -a
+# #               pm2 status
+# #               # stop existing process if running
+# #               pm2 delete node-app || true
+
+# #               # start new process
+# #               # pm2 start "serve .next/static -p 3000" --name=node-app
+# #               pm2 start "node build/standalone/server.js" --name=node-app
+
+# #               # same PM2 process list
+# #               pm2 save
+
+# #           # - name: Install and run serve package
+# #           #   run: |
+# #           #     npm install -g serve
+# #           #     serve .next/static -p 3000
+    
+
 # name: CI/CD Pipeline
 
 # on:
@@ -7,7 +97,6 @@
 #   pull_request:
 #     branches:
 #       - main
-
 
 # jobs: 
 
@@ -32,181 +121,182 @@
 #         - name: Build Next.js app
 #           run: npm run build
 
-#         # - name: Copy static assets
-#         #   run: cp -r public build/standalone/ && cp -r build/static build/standalone/build/
 #         - name: Copy static assets
 #           run: |
-#             # Create the necessary directory structure first
-#             mkdir -p build/standalone/build/
+#             # Create the necessary .next directory inside the standalone output folder.
+#             mkdir -p build/standalone/.next/
             
-#             # Now copy the assets into the existing structure
+#             # 1. Copy assets from the 'public' folder into the standalone distribution
 #             cp -r public build/standalone/
-#             cp -r build/static build/standalone/build/
-
+            
+#             # 2. Copy the compiled client-side static assets (JS, CSS, etc.)
+#             # Source: .next/static (where Next.js puts the compiled assets)
+#             # Destination: build/standalone/.next/ (ensuring static is available to the server)
+#             cp -r .next/static build/standalone/.next/
 
 #         - name: Upload build artifact
 #           uses: actions/upload-artifact@v4
 #           with:
 #             name: nextjs-build
+#             # Upload the entire root directory, excluding node_modules
 #             path: |
 #               ./
 #               !node_modules/
 
-#     build-and-deploy:
-#       runs-on: self-hosted
-#       needs: build
-#       steps:  
-#           - name: Checkout code
-#             uses: actions/checkout@v3
+#     # build-and-deploy:
+#     #   runs-on: self-hosted
+#     #   needs: build
+#     #   steps:  
+#     #       - name: Checkout code
+#     #         uses: actions/checkout@v3
 
-#           - name: Receive the artifact
-#             uses: actions/download-artifact@v4
-#             with:
-#               name: nextjs-build
+#     #       - name: Receive the artifact
+#     #         uses: actions/download-artifact@v4
+#     #         with:
+#     #           name: nextjs-build
           
-#           - name: Show the artifact
-#             run: 
-#               ls -a
+#     #       - name: Show the artifact
+#     #         run: 
+#     #           ls -a
 
-#           - name: Deploy application
-#             run: |
-#               ls -a
-#               pm2 status
-#               # stop existing process if running
-#               pm2 delete node-app || true
+#     #       - name: Install PM2 globally
+#     #         run: npm install -g pm2
 
-#               # start new process
-#               # pm2 start "serve .next/static -p 3000" --name=node-app
-#               pm2 start "node build/standalone/server.js" --name=node-app
+#     #       - name: Deploy application
+#     #         run: |
+#     #           ls -a
+#     #           pm2 status
+#     #           # stop existing process if running
+#     #           pm2 delete node-app || true
 
-#               # same PM2 process list
-#               pm2 save
+#     #           # start new process
+#     #           pm2 start "node build/standalone/server.js" --name=node-app
 
-#           # - name: Install and run serve package
-#           #   run: |
-#           #     npm install -g serve
-#           #     serve .next/static -p 3000
-    
+#     #           # same PM2 process list
+#     #           pm2 save
+
+#     build-and-deploy:
+#         runs-on: self-hosted
+#         needs: build
+
+#         steps:
+#         - name: Checkout code
+#           uses: actions/checkout@v4
+
+#         - name: Download build artifact
+#           uses: actions/download-artifact@v4
+#           with:
+#             name: nextjs-build
+
+#         - name: Show artifact contents
+#           run: ls -la
+
+#         - name: Load NVM and install PM2
+#           run: |
+#             export NVM_DIR="$HOME/.nvm"
+#             source "$NVM_DIR/nvm.sh"
+#             npm install -g pm2
+
+#         - name: Deploy application with PM2
+#           run: |
+#             export NVM_DIR="$HOME/.nvm"
+#             source "$NVM_DIR/nvm.sh"
+
+#             cd $GITHUB_WORKSPACE
+#             ls -la build/standalone/
+
+#             pm2 delete the-sundarbans || true
+#             pm2 start "node build/standalone/server.js" --name=the-sundarbans
+
+#             pm2 save
+#             pm2 status
+
 
 name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
-jobs: 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: "24"
-            cache: 'npm'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
 
-        - name: Install system dependencies for sharp
-          run: sudo apt-get update && sudo apt-get install -y libvips-dev
+      - name: Install system dependencies for sharp
+        run: sudo apt-get update && sudo apt-get install -y libvips-dev
 
-        - name: Install dependencies
-          run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-        - name: Build Next.js app
-          run: npm run build
+      - name: Build Next.js app
+        run: npm run build
 
-        - name: Copy static assets
-          run: |
-            # Create the necessary .next directory inside the standalone output folder.
-            mkdir -p build/standalone/.next/
-            
-            # 1. Copy assets from the 'public' folder into the standalone distribution
-            cp -r public build/standalone/
-            
-            # 2. Copy the compiled client-side static assets (JS, CSS, etc.)
-            # Source: .next/static (where Next.js puts the compiled assets)
-            # Destination: build/standalone/.next/ (ensuring static is available to the server)
-            cp -r .next/static build/standalone/.next/
-
-        - name: Upload build artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: nextjs-build
-            # Upload the entire root directory, excluding node_modules
-            path: |
-              ./
-              !node_modules/
-
-    # build-and-deploy:
-    #   runs-on: self-hosted
-    #   needs: build
-    #   steps:  
-    #       - name: Checkout code
-    #         uses: actions/checkout@v3
-
-    #       - name: Receive the artifact
-    #         uses: actions/download-artifact@v4
-    #         with:
-    #           name: nextjs-build
+      - name: Copy static assets
+        run: |
+          # Ensure standalone structure
+          mkdir -p build/standalone/.next/
           
-    #       - name: Show the artifact
-    #         run: 
-    #           ls -a
+          # Copy public assets and client-side static files
+          cp -r public build/standalone/
+          cp -r .next/static build/standalone/.next/
 
-    #       - name: Install PM2 globally
-    #         run: npm install -g pm2
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: build/
 
-    #       - name: Deploy application
-    #         run: |
-    #           ls -a
-    #           pm2 status
-    #           # stop existing process if running
-    #           pm2 delete node-app || true
+  build-and-deploy:
+    runs-on: self-hosted
+    needs: build
 
-    #           # start new process
-    #           pm2 start "node build/standalone/server.js" --name=node-app
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    #           # same PM2 process list
-    #           pm2 save
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nextjs-build
 
-    build-and-deploy:
-        runs-on: self-hosted
-        needs: build
+      - name: Verify build contents
+        run: |
+          echo "🧱 Checking build output:"
+          ls -la build/standalone/
+          if [ ! -f build/standalone/server.js ]; then
+            echo "❌ ERROR: server.js not found!"
+            exit 1
+          fi
 
-        steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+      - name: Load NVM and install PM2
+        env:
+          NVM_DIR: ${{ env.HOME }}/.nvm
+        run: |
+          source "$NVM_DIR/nvm.sh"
+          npm install -g pm2
 
-        - name: Download build artifact
-          uses: actions/download-artifact@v4
-          with:
-            name: nextjs-build
+      - name: Deploy application with PM2
+        env:
+          NVM_DIR: ${{ env.HOME }}/.nvm
+        run: |
+          source "$NVM_DIR/nvm.sh"
+          cd $GITHUB_WORKSPACE
 
-        - name: Show artifact contents
-          run: ls -la
+          echo "🚀 Starting deployment with PM2..."
+          pm2 delete the-sundarbans || true
+          pm2 start "node build/standalone/server.js" --name=the-sundarbans
 
-        - name: Load NVM and install PM2
-          run: |
-            export NVM_DIR="$HOME/.nvm"
-            source "$NVM_DIR/nvm.sh"
-            npm install -g pm2
-
-        - name: Deploy application with PM2
-          run: |
-            export NVM_DIR="$HOME/.nvm"
-            source "$NVM_DIR/nvm.sh"
-
-            cd $GITHUB_WORKSPACE
-            ls -la build/standalone/
-
-            pm2 delete the-sundarbans || true
-            pm2 start "node build/standalone/server.js" --name=the-sundarbans
-
-            pm2 save
-            pm2 status
+          pm2 save
+          pm2 status
