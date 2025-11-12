@@ -10,6 +10,7 @@ import { epic_ride, fontSans, fontSerif } from "@/config/fonts";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 
 const FacebookPixel = dynamic(import('@/components/FacebookPixel/FacebookPixel'))
 const GoogleAnalytics = dynamic(import('@/components/GoogleAnalytics/GoogleAnalytics'))
@@ -40,7 +41,17 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head >
-        <GoogleAnalytics />
+        {/* <GoogleAnalytics /> */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-1GYSL2F9B9"></Script>
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-1GYSL2F9B9');
+          `}
+        </Script>
       </head>
       <body
         className={clsx(
