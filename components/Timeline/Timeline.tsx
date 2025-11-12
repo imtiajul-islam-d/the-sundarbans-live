@@ -21,7 +21,7 @@ const Timeline = () => {
 
                             <h3 className="text-lg font-bold text-gray-900">Mongla</h3>
 
-                            <Image className='object-cover aspect-3/4 lg:aspect-video' src={"/images/banner/banner1.jpg"} alt='Image' width={1920} height={1080} />
+                            <Image className='object-cover aspect-3/4 lg:aspect-video' src={"/images/banner/banner1.jpg"} alt='Image' width={720} height={500} />
                             <Link href={""} className='block mt-3 text-xs tracking-widest text-orange-500 uppercase font-montserrat md:text-md lg:text-lg'>Details</Link>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ const Timeline = () => {
 
                             <h3 className="text-lg font-bold text-gray-900">Place name</h3>
 
-                            <Image className='object-cover aspect-3/4 lg:aspect-video' src={"/images/banner/banner1.jpg"} alt='Image' width={1920} height={1080} />
+                            <Image className='object-cover aspect-3/4 lg:aspect-video' src={"/images/banner/banner1.jpg"} alt='Image' width={720} height={500} />
                             <Link href={""} className='block mt-3 text-xs tracking-widest text-orange-500 uppercase font-montserrat md:text-md lg:text-lg'>Details</Link>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ const Timeline = () => {
 
                             <h3 className="text-lg font-bold text-gray-900">Place name</h3>
 
-                            <Image className='object-cover aspect-3/4 lg:aspect-video' src={"/images/banner/banner1.jpg"} alt='Image' width={1920} height={1080} />
+                            <Image className='object-cover aspect-3/4 lg:aspect-video' src={"/images/banner/banner1.jpg"} alt='Image' width={720} height={500} />
                             <Link href={""} className='block mt-3 text-xs tracking-widest text-orange-500 uppercase font-montserrat md:text-md lg:text-lg'>Details</Link>
                         </div>
                     </div>

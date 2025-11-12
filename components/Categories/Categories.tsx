@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image } from "@heroui/image"
+// import { Image } from "@heroui/image"
+import Image from 'next/image';
 import { Button } from "@heroui/button"
 import { Card, CardHeader, CardFooter, } from "@heroui/card";
 
@@ -13,8 +14,8 @@ const Categories = () => {
                         <h4 className="font-medium text-white text-large">Stream the Acme event</h4>
                     </CardHeader>
                     <Image
-                        isZoomed
-                        removeWrapper
+                        width={500}
+                        height={400}
                         alt="Card background"
                         className="z-0 object-cover w-full h-full rounded-none"
                         src={"/images/banner/banner2.jpg"}
@@ -26,8 +27,8 @@ const Categories = () => {
                         <h4 className="font-medium text-white text-large">Contribute to the planet</h4>
                     </CardHeader>
                     <Image
-                        removeWrapper
-                        isZoomed
+                        width={500}
+                        height={400}
                         alt="Card background"
                         className="z-0 object-cover w-full h-full rounded-none"
                         src={"/images/banner/banner3.jpg"}
@@ -35,12 +36,12 @@ const Categories = () => {
                 </Card>
                 <Card className="col-span-12 rounded-none sm:col-span-4 aspect-square">
                     <CardHeader className="absolute z-10 top-1 flex-col items-start!">
-                        <p className="font-bold text-white uppercase text-tiny">Supercharged</p>
+                        <p className="font-sans font-bold tracking-widest text-white uppercase text-tiny">Supercharged</p>
                         <h4 className="font-medium text-white text-large">Creates beauty like a beast</h4>
                     </CardHeader>
                     <Image
-                        removeWrapper
-                        isZoomed
+                        width={500}
+                        height={400}
                         alt="Card background"
                         className="z-0 object-cover w-full h-full rounded-none"
                         src={"/images/banner/banner4.jpg"}
@@ -48,12 +49,12 @@ const Categories = () => {
                 </Card>
                 <Card isFooterBlurred className="w-full col-span-12 rounded-none aspect-square sm:aspect-auto sm:col-span-5">
                     <CardHeader className="absolute z-10 flex-col items-start top-1">
-                        <p className="font-bold uppercase text-tiny text-white/90">New</p>
+                        <p className="font-sans font-bold tracking-widest text-white uppercase text-tiny">New</p>
                         <h4 className="text-2xl font-medium text-white">Acme camera</h4>
                     </CardHeader>
                     <Image
-                        removeWrapper
-                        isZoomed
+                        width={500}
+                        height={400}
                         alt="Card example background"
                         className="z-0 object-cover w-full h-full scale-125 -translate-y-6 rounded-none"
                         src={"/images/banner/banner5.jpg"}
@@ -70,12 +71,12 @@ const Categories = () => {
                 </Card>
                 <Card isFooterBlurred className="w-full col-span-12 rounded-none aspect-square sm:aspect-video sm:col-span-7">
                     <CardHeader className="absolute z-10 flex-col items-start top-1">
-                        <p className="font-bold text-white uppercase text-tiny">Your day your way</p>
+                        <p className="font-sans font-bold tracking-widest text-white uppercase text-tiny">Your day your way</p>
                         <h4 className="text-xl font-medium text-white">Your checklist for better sleep</h4>
                     </CardHeader>
                     <Image
-                        removeWrapper
-                        isZoomed
+                        width={500}
+                        height={400}
                         alt="Relaxing app background"
                         className="z-0 object-cover w-full h-full rounded-none "
                         src={"/images/banner/banner6.jpg"}

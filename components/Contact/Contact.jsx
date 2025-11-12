@@ -75,8 +75,8 @@ const Contact = () => {
                                     </svg>
                                 </div>
                                 <a href="javascript:void(0)" className="ml-4 text-sm">
-                                    <small className="block text-slate-900">Mail</small>
-                                    <span className="font-semibold text-blue-600">info@example.com</span>
+                                    <small className="block text-slate-900">Email</small>
+                                    <span className="font-semibold text-blue-600">thesundarbansbd@gmail.com</span>
                                 </a>
                             </li>
                         </ul>

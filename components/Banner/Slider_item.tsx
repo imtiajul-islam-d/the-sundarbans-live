@@ -9,7 +9,7 @@ const Slider_item = ({ item }: any) => {
         <div className="border border-gray-200 cursor-pointer">
             {/* TODO: placeholder for image */}
             <div className="aspect-3/4">
-                <Image className="object-cover w-auto min-h-full" src={item?.img} alt={`Banner image`} width={1920} height={1080} />
+                <Image className="object-cover w-auto min-h-full" src={item?.img} alt={`Banner image`} width={720} height={720} />
             </div>
 
             <h3 className="mt-4 text-5xl font-medium tracking-wide text-center font-epic">{item?.place_name}</h3>

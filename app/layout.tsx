@@ -9,6 +9,10 @@ import { siteConfig } from "@/config/site";
 import { epic_ride, fontSans, fontSerif } from "@/config/fonts";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import dynamic from "next/dynamic";
+
+const FacebookPixel = dynamic(import('@/components/FacebookPixel/FacebookPixel'))
+const GoogleAnalytics = dynamic(import('@/components/GoogleAnalytics/GoogleAnalytics'))
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +39,9 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head >
+        <GoogleAnalytics />
+      </head>
       <body
         className={clsx(
           "font-serif",
@@ -49,6 +55,7 @@ export default function RootLayout({
             {/* <Navbar /> */}
             <Navbar />
             <main className="">
+              <FacebookPixel />
               {children}
             </main>
             <footer className="">
