@@ -6,8 +6,14 @@ import { Card, CardHeader, CardFooter, } from "@heroui/card";
 
 const Categories = () => {
     return (
-        <section className='mt-2 md:mt-7 lg:mt-10'>
-            <div className="grid grid-cols-12 grid-rows-2 gap-2 px-2 mx-auto max-w-[1440px]">
+        <section className='px-2 mx-auto mt-2 md:mt-7 lg:mt-10 max-w-7xl'>
+            <div>
+                <h2 className='mt-2 font-sans uppercase text-lg sm:text-xl tracking-[4px]'>Let&apos;s keep in mind,</h2>
+            </div>
+            {/* <div className='max-w-4xl mt-4'>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates consectetur commodi itaque aperiam inventore eos doloribus aliquid magnam quam, veniam laboriosam consequuntur molestias similique quis dolore accusantium obcaecati cupiditate cumque at debitis officiis qui rerum? Non consectetur amet et. Quae modi quidem quis nobis enim, quibusdam exercitationem delectus voluptates aliquam.</p>
+            </div> */}
+            <div className="grid grid-cols-12 grid-rows-2 gap-2 ">
                 <Card className="col-span-12 rounded-none sm:col-span-4 aspect-square">
                     <CardHeader className="absolute z-10 top-1 flex-col items-start!">
                         <p className="font-sans font-bold tracking-widest text-white uppercase text-tiny">What to watch</p>

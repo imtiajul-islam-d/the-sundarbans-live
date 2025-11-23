@@ -4,12 +4,27 @@ import React from 'react';
 const Gallery = () => {
     return (
         <section className="py-6 ">
-            <div className="grid grid-cols-2 gap-2 px-1 mx-auto md:grid-cols-4">
-                <Image src={"/images/banner/banner1.jpg"} alt="" className="w-full h-full col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 aspect-square" width={1920} height={1080} />
-                <Image alt="" className="object-cover w-full h-full rounded shadow-sm min-h-48" src={"/images/banner/banner1.jpg"} width={720} height={480} />
-                <Image alt="" className="object-cover w-full h-full rounded shadow-sm min-h-48" src={"/images/banner/banner2.jpg"} width={720} height={480} />
-                <Image alt="" className="object-cover w-full h-full rounded shadow-sm min-h-48" src={"/images/banner/banner3.jpg"} width={720} height={480} />
-                <Image alt="" className="object-cover w-full h-full rounded shadow-sm min-h-48" src={"/images/banner/banner4.jpg"} width={720} height={480} />
+            <div className="px-2 mx-auto max-w-7xl">
+                <div className="grid grid-cols-2 lg:grid-cols-3">
+                    <div className="relative overflow-hidden bg-gray-100 cursor-pointer before:absolute before:inset-0 group">
+                        <Image className="object-cover object-top h-full max-w-full transition-all group-hover:scale-105 aspect-square" src={"/images/banner/banner2.jpg"} alt={`Banner image`} width={720} height={720} />
+                    </div>
+                    <div className="relative overflow-hidden bg-gray-100 cursor-pointer before:absolute before:inset-0 group ">
+                        <Image className="object-cover object-top h-full max-w-full transition-all group-hover:scale-105 aspect-square" src={"/images/banner/banner3.jpg"} alt={`Banner image`} width={720} height={720} />
+                    </div>
+                    <div className="relative overflow-hidden bg-gray-100 cursor-pointer before:absolute before:inset-0 group ">
+                        <Image className="object-cover object-top h-full max-w-full transition-all group-hover:scale-105 aspect-square" src={"/images/banner/banner4.jpg"} alt={`Banner image`} width={720} height={720} />
+                    </div>
+                    <div className="relative overflow-hidden bg-gray-100 cursor-pointer before:absolute before:inset-0 group ">
+                        <Image className="object-cover object-top h-full max-w-full transition-all group-hover:scale-105 aspect-square" src={"/images/banner/banner5.jpg"} alt={`Banner image`} width={720} height={720} />
+                    </div>
+                    <div className="relative overflow-hidden bg-gray-100 cursor-pointer before:absolute before:inset-0 group ">
+                        <Image className="object-cover object-top h-full max-w-full transition-all group-hover:scale-105 aspect-square" src={"/images/banner/banner6.jpg"} alt={`Banner image`} width={720} height={720} />
+                    </div>
+                    <div className="relative overflow-hidden bg-gray-100 cursor-pointer before:absolute before:inset-0 group ">
+                        <Image className="object-cover object-top h-full max-w-full transition-all group-hover:scale-105 aspect-square" src={"/images/banner/banner2.jpg"} alt={`Banner image`} width={720} height={720} />
+                    </div>
+                </div>
             </div>
         </section>
     );

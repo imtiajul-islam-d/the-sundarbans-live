@@ -16,7 +16,7 @@ const Navbar = () => {
         <nav>
             {/* Top-bar */}
             <div className='hidden h-fit bg-[#F7F2EE] lg:block px-8 py-4'>
-                <div className='font-sans lg:grid grid-cols-12 max-w-[1440px] mx-auto'>
+                <div className='font-sans lg:grid grid-cols-12 max-w-[1280px] mx-auto'>
                     <div className='flex items-center col-span-3'>
                         <Link href={"#"} className='flex items-center text-xs font-medium tracking-widest uppercase'>
                             <span className='inline-block text-lg mr-1.5'>
@@ -26,7 +26,7 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className='flex items-center justify-center col-span-6'>
-                        <ul className='flex items-center justify-center text-sm font-medium lowercase gap-7 lg:tracking-wide xl:tracking-wider'>
+                        <ul className='flex items-center justify-center text-sm font-medium uppercase gap-7 lg:tracking-wide xl:tracking-wider'>
                             <li>
                                 <Link href={"#"}>Home</Link>
                             </li>
@@ -42,25 +42,24 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='flex justify-end col-span-3'>
-                        <ul className='flex gap-7 text-md'>
-                            <li>
+                        <div className='flex gap-7 text-md'>
+                            <a href="https://www.facebook.com/thesundarbanstriply" target='blank' className='cursor-pointer'>
                                 <FaFacebookF />
-
-                            </li>
-                            <li>
+                            </a>
+                            <a href=''>
                                 <IoLogoInstagram />
-                            </li>
-                            <li>
+                            </a>
+                            <a href=''>
                                 <RiTwitterXLine />
 
-                            </li>
-                            <li>
+                            </a>
+                            <a href=''>
                                 <FaYoutube />
-                            </li>
-                            <li>
+                            </a>
+                            <a href=''>
                                 <IoLogoInstagram />
-                            </li>
-                        </ul>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

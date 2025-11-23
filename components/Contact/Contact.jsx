@@ -58,7 +58,7 @@ const Contact = () => {
 
     return (
         <section>
-            <div className="grid items-start max-w-[1440px] gap-16 p-6 mx-auto bg-white lg:grid-cols-2 max-lg:max-w-2xl">
+            <div className="grid items-start gap-16 p-6 mx-auto bg-white max-w-7xl lg:grid-cols-2 max-lg:max-w-2xl">
                 <div>
                     <h2 className="font-sans text-3xl font-bold text-orange-500">Let's Talk</h2>
                     <p className="text-[15px] text-slate-600 mt-4 leading-relaxed">We love helping travelers, because we&apos;re travelers too! </p>
@@ -86,7 +86,7 @@ const Contact = () => {
                         <h2 className="font-sans text-base font-semibold text-slate-900">Socials</h2>
                         <ul className="flex mt-4 space-x-4">
                             <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                                <a href="javascript:void(0)">
+                                <a href="https://www.facebook.com/thesundarbanstriply" target='blank'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill='#000'
                                         viewBox="0 0 24 24">
                                         <path

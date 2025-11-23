@@ -17,10 +17,10 @@ const Banner_slider = () => {
     useEffect(() => {
         const updateSlides = () => {
             const width = window.innerWidth;
-            if (width >= 1440) setSlides(5);
-            else if (width >= 1024) setSlides(4);
+            if (width >= 1440) setSlides(3);
+            else if (width >= 1024) setSlides(3);
             // else if (width >= 768) setSlides(4);
-            else if (width >= 640) setSlides(3);
+            else if (width >= 640) setSlides(2);
             else if (width >= 480) setSlides(2);
             else setSlides(1);
         };

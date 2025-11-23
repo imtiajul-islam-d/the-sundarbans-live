@@ -52,6 +52,7 @@ export default function RootLayout({
             gtag('config', 'G-1GYSL2F9B9');
           `}
         </Script>
+
       </head>
       <body
         className={clsx(

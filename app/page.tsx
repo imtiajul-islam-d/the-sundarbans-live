@@ -13,16 +13,21 @@ import Timeline from "@/components/Timeline/Timeline";
 import Accordion_comp from "@/components/Accordion/Accordion";
 import Gallery from "@/components/Gallary/Gallery";
 import Contact from "@/components/Contact/Contact";
+import IntroVideo from "@/components/IntroVideo/IntroVideo";
+import Hero from "@/components/Hero/Hero";
+import About from "@/components/About/About";
+import Statistics from "@/components/Statistics/Statistics";
+import ThingsToSeeAndDo from "@/components/ThingsToSeeAndDo/ThingsToSeeAndDo";
 
 export default function Home() {
   return (
     <section className="">
-      <Banner />
-      <Overview />
-      <Categories />
-      <Timeline />
-      <Accordion_comp />
+      <Hero />
+      <About />
+      <ThingsToSeeAndDo />
       <Gallery />
+      <Statistics />
+      <Banner />
       <Contact />
     </section>
   );
